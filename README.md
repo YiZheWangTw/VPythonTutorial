@@ -34,7 +34,7 @@ My email address: <keejko@gmail.com>
 *   14.雙重簡諧運動       <https://keejko.blogspot.tw/2018/04/blog-post_26.html> 
 *   15.一維彈性碰撞       <http://keejko.blogspot.tw/2018/04/blog-post_29.html> 
 *   16.自由落下兩球碰撞   <http://keejko.blogspot.tw/2018/05/blog-post.html> 
-*   17.三維彈性碰撞       <http://keejko.blogspot.tw/2018/05/blog-post_6.html 
+*   17.三維彈性碰撞       <http://keejko.blogspot.tw/2018/05/blog-post_6.html> 
 *   18.重力場及電場       <http://keejko.blogspot.tw/2018/05/blog-post_7.html> 
 *   19.靜電力及簡諧       <http://keejko.blogspot.tw/2018/05/blog-post_10.html> 
 *   20.速度選擇器         <http://keejko.blogspot.tw/2018/05/blog-post_11.html> 
