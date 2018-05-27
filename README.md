@@ -1,7 +1,7 @@
 # VPythonTutorial
 
-I am a high school teacher in Taiwan.
-It's a simple tutorial of VPython. 
+I am a high school teacher in Taiwan.\n
+It's a simple tutorial of VPython.\n
 I wrote this tutorial with Python 3.X and VPython 7. 
 For more information, please visit my website. ( https://sites.google.com/view/yizhe/%E8%AA%B2%E7%A8%8B/python%E7%89%A9%E7%90%86%E6%A8%A1%E6%93%AC )
 Any comment is welcome!
