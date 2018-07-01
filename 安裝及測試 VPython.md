@@ -1,0 +1,134 @@
+# 安裝及測試 VPython
+
+>作者：王一哲　　　　　日期：2018/3/5
+
+<br></br>
+
+## 下載並安裝Python
+ 
+Python 是一種直譯式的高階程式語言，功能強大且程式碼較為簡潔，個人認為比 C 語言容易上手。在 Google 上搜尋 Python，第1個搜尋結果通常會是[Python 官方網站的首頁](https://www.python.org/)。目前最新的版本為3.6.4，下載頁面為[https://www.python.org/downloads/release/python-364/](https://www.python.org/downloads/release/python-364/) ，找到適合自己作業系統的版本下載並安裝。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/01ruAg4.png">
+<center>Python 官方網站首頁</center>
+<br></br>
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/0xRj2IN.png">
+<center>Python 官方網站下載頁面</center>
+<br></br>
+
+## 選擇 Python 2.7.14 或 3.6.4？
+
+由於這兩個版本有部分指令格式不太一樣，搭配的VPython版本也不同，需要一開始就選邊站，如果沒有特別的需求就選3.6.4。
+
+- 舊版：Python 2.7.14 + VPython 6
+- 新版：Python 3.X + VPython 7
+
+目前能找到的VPython中文教學不多，最完整的教材應該是由臺灣大學物理系石明豐教授建置的網站[http://vphysics.ntu.edu.tw/](http://vphysics.ntu.edu.tw/)，不過石教授的程式碼是採用舊版的組合，如果想參考石教授的講義學習VPython請裝舊版。
+
+<br></br>
+
+## 安裝 Python
+
+1. 找到剛才下載的安裝檔，在檔案上按滑鼠右鍵選擇以系統管理員身分執行。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="50%" width="50%" src="https://i.imgur.com/avX5sIt.png">
+<br></br>
+
+2. 建議勾選安裝視窗中最下方的選項 Add Python 3.6 to PATH，在安裝之後如果要從指令介面執行 Python 時 Windows 才能在 PATH 當中找到對應的指令。建議採用預設值安裝，選擇最上方的 Install Now。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/KHXTiS1.png">
+<br></br>
+
+3. 安裝完成後會看到如下圖的視窗，如果有出現最底下的選項 Disable path length limit（停用路徑長度限制），建議採用這個設定，用滑鼠左鍵在這個選項上點一下即可。最後按 Close 關閉視窗。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/K3a1CRC.png">
+<br></br>
+
+4. 在 Windows 開始工具列搜尋 python 可以看到以下幾個項目，選取 IDLE，開啟和 Python 直譯器同時安裝的整合式開發環境。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="50%" width="50%" src="https://i.imgur.com/27ZeBgN.png">
+<br></br>
+
+5. 預設會開啟 Python Shell，可以直接在這裡輸入指令或程式碼。我們通常喜歡用 Hello World 當作第一支程式，輸入
+
+```python=
+print(“Hello World”)
+```
+
+按下 Enter 之後系統會印出 Hello World，如果可以印出 Hello World 就代表您已經成功安裝 Pyhton 開發環境。函式 print 就是用來印出文字，引號可以採用 **‘** 或 **“** ，效果相同，但是要成對。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/SQoZ0dl.png">
+<center>Python Shell</center>
+<br></br>
+
+6. 但是直接在 Python Shell 當中輸入程式碼並不方便，建議將程式碼另外存成 **.py** 檔再用直譯器執行，這樣會比較方便。可以使用 IDLE 裡內建的編輯器，在 Python Shell 的工具列選取 **File => New File** 或按 **Ctrl + N**，輸入程式碼後再按 **Ctrl + S** 存檔，最後按下 **F5** 執行程式。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/edjSa8O.png">
+<center>Python IDLE 編輯器畫面</center>
+<br></br>
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/zQOFKsK.png">
+<center>存成 hello.py 後用 Python Shell 執行的畫面</center>
+<br></br>
+
+7. 另外也可以使用其它的文字編輯器，例如[Notepad++](https://notepad-plus-plus.org/zh/)，將程式碼存檔後再用 Windows 的指令介面（命令提示字元）執行。在 Windows 開始選單中搜尋 **cmd**，使用 **cd** 指令切換到放置 hello.py 的資料夾，輸入以下指令並按 **Enter**。但其實使用IDLE比較方便。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/7WDOx2E.png">
+<center>使用 Notepad++ 編輯 hello.py</center>
+<br></br>
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/eo3b1GL.png">
+<center>於 Windows 的指令介面中執行 hello.py</center>
+<br></br>
+
+
+## 安裝 VPython
+
+1. 如果在 Google 上搜尋 VPython 會找到兩個網站
+
+- 舊版：http://vpython.org/ 
+- 新版：http://www.glowscript.org/docs/VPythonDocs/index.html 
+
+如果要安裝舊版要自己從網站裡找對應的安裝檔，但我們要安裝的是新版，可以讓 Python 自動幫我們找對應的版本即可。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/YKicMLM.png">
+<center>VPython 舊版官方網站</center>
+<br></br>
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/RjdNF4d.png">
+<center>VPython 新版官方網站</center>
+<br></br>
+
+2. 在 Windows 開始選單上按滑鼠右鍵，選取 **Windows PowerShell(系統管理員)**，輸入以下指令並按 Enter 自動安裝。
+
+```python
+pip3 install vpython
+```
+
+在 Windows 中使用 **pip** 或 **pip3** 都可以，系統會自動搜尋需要的套件並安裝，接下來只需要等幾分鐘就完成了。如果以後要更新版本，請用
+
+```python
+pip3 install vpython --upgrade
+```
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="50%" width="50%" src="https://i.imgur.com/hfoQFcA.png">
+<center>在 Windows 開始選單上按滑鼠右鍵出現的選單</center>
+<br></br>
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/L8FvMbd.png">
+<center>Windows PowerShell(系統管理員)</center>
+<br></br>
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/89ydsdf.png">
+<center>Windows PowerShell(系統管理員) VPython 安裝完成</center>
+<br></br>
+
+3. 下載以下程式碼 [3_1DMotion.py](https://github.com/YiZheWangTw/VPythonTutorial/blob/master/03.%E7%AD%89%E9%80%9F%E5%BA%A6%E7%9B%B4%E7%B7%9A%E9%81%8B%E5%8B%95/3_1DMotion.py)，使用 Python IDLE 開啟此檔案，按下 **F5** 執行，如果 Python 會自動開始您預設的瀏覽器並在新分頁中顯示以下的畫面，代表您已經正確安裝 VPython，可以開始做物理模擬動畫。
+
+<img style="display: block; margin-left: auto; margin-right: auto" height="100%" width="100%" src="https://i.imgur.com/m8s5rsV.png">
+<center>3_1DMotion.py 執行時的畫面</center>
+<br></br>
+
+---
+
+###### tags: `VPython`
