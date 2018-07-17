@@ -42,13 +42,13 @@ b2.v = vector(v2, 0, 0)
 # 產生彈簧, 起點為(-d2/2.0, 0, 0), 方向為(-L0, 0, 0)
 spring = helix(radius = 0.05, pos = b2.pos + vector(-d2/2.0, 0, 0), axis = vector(-L0, 0, 0), thickness = 0.03)
 # 繪圖部分
-gd1 = graph(title = "E-t plot", x = 0, y = 300, widht = 600, height = 450, xtitle = "t(s)", \
+gd1 = graph(title = "E-t plot", x = 0, y = 300, width = 600, height = 450, xtitle = "t(s)", \
             ytitle = "red: K1, green: K2, orange: U, blue: E(J)")
 kt1 = gcurve(graph = gd1, color = c1)
 kt2 = gcurve(graph = gd1, color = c2)
 ut = gcurve(graph = gd1, color = color.orange)
 et = gcurve(graph = gd1, color = color.blue)
-gd2 = graph(title = "v-t & a-t plot", x = 0, y = 750, widht = 600, height = 450, xtitle = "t(s)",\
+gd2 = graph(title = "v-t & a-t plot", x = 0, y = 750, width = 600, height = 450, xtitle = "t(s)",\
             ytitle = "red: v1, green: v2(m/s); orange: a1, blue: a2(m/s^2)")
 vt1 = gcurve(graph = gd2, color = c1)
 vt2 = gcurve(graph = gd2, color = c2)
