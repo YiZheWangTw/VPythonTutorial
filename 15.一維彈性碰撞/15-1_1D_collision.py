@@ -37,7 +37,7 @@ b1.v = vector(v1, 0, 0)
 b2 = box(length = d2, height = d2, width = d2, color = c2, pos = vector(0, 0, 0), m = m2)
 b2.v = vector(v2, 0, 0)
 # 繪圖部分
-gd = graph(title = "v-t plot", x = 0, y = 300, widht = 600, height = 450, xtitle = "t(s)", \
+gd = graph(title = "v-t plot", x = 0, y = 300, width = 600, height = 450, xtitle = "t(s)", \
            ytitle = "red: v1, green: v2(m/s)")
 vt1 = gcurve(graph = gd, color = c1)
 vt2 = gcurve(graph = gd, color = c2)
