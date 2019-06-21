@@ -21,8 +21,8 @@ dt = 0.01    # 時間間隔
     (3) 顏色選項說明 http://www.glowscript.org/docs/VPythonDocs/color.html
     (4) 用 graph 產生繪圖視窗 http://www.glowscript.org/docs/VPythonDocs/graph.html
 """
-scene = canvas(title = "1D Motion", width = 800, height = 600, x = 0, y = 0, center = vector(0, 0.1, 0), \
-                          background = vector(0, 0.6, 0.6))
+scene = canvas(title = "1D Motion", width = 800, height = 600, x = 0, y = 0, center = vector(0, 0.1, 0),
+               background = vector(0, 0.6, 0.6))
 floor = box(pos = vector(0, 0, 0), length = L, height = size*0.1, width = L*0.5, color = color.blue)
 #floor = box(pos = vec(0, 0, 0), size = vec(L, size*0.1, L*0.5), color = color.blue)
 cube = box(pos = vector(-L*0.5 + size*0.5, size*0.55, 0), length = size, height = size, width = size, color = color.red)
