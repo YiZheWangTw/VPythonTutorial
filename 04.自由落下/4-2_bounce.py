@@ -21,8 +21,8 @@ dt = 0.001   # 時間間隔
     (3) 用 sphere 物件產生小球 http://www.glowscript.org/docs/VPythonDocs/sphere.html
     (4) 用 graph 產生繪圖視窗 http://www.glowscript.org/docs/VPythonDocs/graph.html
 """
-scene = canvas(title = "Free Fall", width = 600, height = 600, x = 0, y = 0, center = vector(0, h/2, 0), \
-                          background = vector(0, 0.6, 0.6))
+scene = canvas(title = "Free Fall", width = 600, height = 600, x = 0, y = 0, center = vector(0, h/2, 0),
+                background = vector(0, 0.6, 0.6))
 floor = box(pos = vector(0, 0, 0), length = 40, height = 0.01, width = 10, color = color.blue)
 ball = sphere(pos = vector(0, h, 0), radius = size, color = color.red)
 ball.v = vector(0, 0, 0)
