@@ -41,11 +41,11 @@ at2 = gcurve(graph=gd3, color=c2)
 # 開啟檔案 4-4_airdrag_vt_data.csv, 屬性為寫入, 先寫入欄位的標題
 file = open("data.csv", "w", encoding="UTF-8")
 file.write("t(s), y1(m), y2(m), v1(m/s), v2(m/s), a1(m/s^2), a2(m/s^2)\n")
-tp=0
+tp = 0
 
 # 設定計算終端速度用的變數
-eps=0.0000000001
-v1=0
+eps = 0.0000000001
+v1 = 0
 
 """
  3. 物體運動部分, 小球速度變化小於 eps 時停止運作
