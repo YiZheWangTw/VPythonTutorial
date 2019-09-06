@@ -1,8 +1,9 @@
 # Python基本語法
 
->作者：王一哲　　　　　日期：2018/3/6
+> 作者：王一哲
+> 日期：2018/3/6
 
-<br></br>
+<br />
 
 ## 判斷條件：if
 
@@ -25,8 +26,8 @@ else:
 ```
 
 <img style="display: block; margin-left: auto; margin-right: auto" height="50%" width="50%" src="https://i.imgur.com/U9pZTof.png">
-<center>if … else … 流程圖</center>
-<br></br>
+<div style="text-align:center">if … else … 流程圖</div>
+<br />
 
 如果條件不只有一個，可以使用多層的 if，語法為
 
@@ -40,8 +41,8 @@ else:
 ```
 
 <img style="display: block; margin-left: auto; margin-right: auto" height="80%" width="80%" src="https://i.imgur.com/GwFGMDg.png">
-<center>if … elif … else … 流程圖</center>
-<br></br>
+<div style="text-align:center">if … elif … else … 流程圖</div>
+<br />
 
 
 ## 程式 2-1：if 的使用方法
@@ -65,8 +66,8 @@ else:
 
 執行時先由使用者用鍵盤輸入 a、b 的值，由於輸入的資料會被視為字串，加上 int 將字串轉換為整數。雖然 Python 在輸入的資料看起來很像數字時，會自動將輸入的資料格式轉換為數字，但是加上 int 強制轉換為數字是比較保險的作法。第一個 if 是：當 a > b 時印出文字 a > b，若條件不成立則印出文字 a <= b。第二個 if 是：當 a > b 時印出文字 a > b，當 a == b 時印出文字 a = b，若條件不成立則印出文字 a < b。
 
-在 Python、C、C++及大部分的程式語言當中，**等號 = 用來指定數值給變數**，例如 a = 2 是將 2 這個數值指定給變數 a；**若要比較兩個變數是否相等，要使用 == **，這與數學式子的寫法不相同，需要適應一下。
-<br></br>
+在 Python、C、C++及大部分的程式語言當中，**等號 = 用來指定數值給變數**，例如 a = 2 是將 2 這個數值指定給變數 a；**若要比較兩個變數是否相等，要使用 ==**，這與數學式子的寫法不相同，需要適應一下。
+<br />
 
 ## 重複執行：while 迴圈
 
@@ -80,8 +81,8 @@ while(條件):
 當條件成立時執行冒號下的程式碼，一直重複執行到條件不成立時為止。條件成立時執行的程式碼一樣要注意程式碼縮排的空格數。while 迴圈的流程圖如下
 
 <img style="display: block; margin-left: auto; margin-right: auto" height="50%" width="50%" src="https://i.imgur.com/onwukK4.png">
-<center>while 迴圈流程圖</center>
-<br></br>
+<div style="text-align:center">while 迴圈流程圖</div>
+<br />
 
 
 ## 程式 2-2：while 的使用方法
@@ -103,7 +104,7 @@ print("result = ", result)
 
 > 問題：如果想計算的是 1 + 3 + 5 + 7 +  9 = ? 要怎麼寫呢？（提示：只要改一個地方即可。）
 
-<br></br>
+<br />
 
 ## 重複執行：for 迴圈
 
@@ -129,8 +130,8 @@ range(起始值, 結束值, 增量)
 ```
 
 <img style="display: block; margin-left: auto; margin-right: auto" height="50%" width="50%" src="https://i.imgur.com/vG3fbS8.png">
-<center>for 迴圈流程圖</center>
-<br></br>
+<div style="text-align:center">for 迴圈流程圖</div>
+<br />
 
 
 ## 程式 2-3：for 的使用方法
@@ -149,7 +150,7 @@ print("result = ", result)
 
 > 問題：如果想計算的是 1 + 3 + 5 + 7 +  9 = ? 要怎麼寫呢？（提示：只要改一個地方即可。）
 
-<br></br>
+<br />
 
 ## 結語
 
