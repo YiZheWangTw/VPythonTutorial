@@ -30,13 +30,13 @@ scene = canvas(title="Pendulum", width=600, height=600, x=0, y=0, background=vec
 roof = box(pos=vec(0, L/2 + 0.05, 0), size=vec(L, 0.1, 0.5*L), color=color.blue)
 ball = sphere(pos=vec(L*sin(theta0), L/2 - L*cos(theta0), 0), radius=size, color=color.red,
               make_trail=True, retain=100, v=vec(0, 0, 0))
-rope=cylinder(pos=vec(0, L/2, 0), axis=ball.pos - vec(0, L/2, 0), radius=0.1*size, color=color.yellow)
+rope = cylinder(pos=vec(0, L/2, 0), axis=ball.pos - vec(0, L/2, 0), radius=0.1*size, color=color.yellow)
 # 產生表示速度的箭頭
 arrow_v = arrow(pos=ball.pos, axis=vec(0, 0, 0), shaftwidth=0.3*size, color=color.green)
 arrow_vx = arrow(pos=ball.pos, axis=vec(0, 0, 0), shaftwidth=0.3*size, color=color.magenta)
 arrow_vy = arrow(pos=ball.pos, axis=vec(0, 0, 0), shaftwidth=0.3*size, color=color.orange)
 # 繪圖部分
-gd = graph(title="plot", width=600, height=450, x=0, y=600, xtitle="t(s)", 
+gd = graph(title="plot", width=600, height=450, x=0, y=600, xtitle="<i>t</i> (s)", 
            ytitle="blue: theta (rad), green: omega (rad/s), red: alpha (rad/s<sup>2</sup>)")
 theta_t = gcurve(graph=gd, color=color.blue)
 omega_t = gcurve(graph=gd, color=color.green)
@@ -51,7 +51,10 @@ while(i < 5):
     rate(1000)
 # 計算小球所受力矩、角加速度、角速度、擺角
     r = ball.pos - vec(0, L/2, 0)
-    alpha = -m*g*ball.pos.x/(m*L*L)
+    F = vec(0, -m*g, 0)
+    torque = cross(r, F)
+    alpha = torque.z/(m*L*L)
+    #alpha = -m*g*ball.pos.x/(m*L*L)
     omega += alpha*dt
     theta += omega*dt
 # 更新小球的位置、速度, 繩子的軸方向及長度
