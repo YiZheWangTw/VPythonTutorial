@@ -1,6 +1,8 @@
 """
  VPython教學: 12-4.行星運動, 用dictionary 儲存星球資料, 用 class 產生行星
- 日期: 2018/2/26
+ Ver. 1: 2018/2/26
+ Ver. 2: 2018/10/25 改為不用繼承的 class
+ Ver. 3: 2019/9/8
  作者: 王一哲
 """
 from vpython import *
@@ -26,10 +28,22 @@ dt = 60*60            # 時間間隔
 """
  2. 產生行星類別 
 """
-class planet_c(sphere):
-    sun_m = mass["Sun"]
-    def a(self):
-        return - G*self.sun_m / self.pos.mag2 * self.pos.norm()
+# 不用繼承的 class 寫法
+class Planet:
+    def __init__(self, pos, radius, mass, color, v):
+        self.pos = pos
+        self.radius = radius
+        self.mass = mass
+        self.color = color
+        self.v = v
+        self.a = 0
+        self.planet = sphere(pos=self.pos, radius=self.radius, mass=self.mass, 
+                             color=self.color, make_trail=True, retain=365, v=self.v)
+    def update(self, dt):
+        self.dt = dt
+        self.a = -G*mass["Sun"] / self.planet.pos.mag2 * self.planet.pos.norm()
+        self.v += self.a * self.dt
+        self.planet.pos += self.v * self.dt
 
 """
  3. 畫面設定
@@ -37,19 +51,18 @@ class planet_c(sphere):
     (2) 用 sphere 物件產生星球 http://www.glowscript.org/docs/VPythonDocs/sphere.html
     (3) 星球的半徑要手動調整比例, 否則會看不到星球
 """
-scene = canvas(title = "Planetary Motion", width = 600, height = 600, x = 0, y = 0, background = color.black)
-sun = sphere(pos = vector(0,0,0), radius = radius["Sun"]*20, color = color.orange, emissive = True)
-# 原來的寫法為 scene.lights = [local_light(pos = vector(0,0,0), color = color.white)]
+scene = canvas(title="Planetary Motion", width=600, height=600, x=0, y=0, background=color.black)
+sun = sphere(pos=vec(0,0,0), radius=radius["Sun"]*20, color=color.orange, emissive=True)
+# 原來的寫法為 scene.lights = [local_light(pos = vec(0,0,0), color = color.white)]
 # 在 VPython 7 中 canvas.lights 無法設定為 local_light, 只能另外在太陽處放置另一個光源 lamp
-lamp = local_light(pos = vector(0,0,0), color = color.white)
+lamp = local_light(pos=vec(0,0,0), color=color.white)
 # 用 for 迴圈產生水星、金星、地球、火星
 names = ["Mercury", "Venus", "Earth", "Mars"]
 planets = []
 
 for name in names:
-    planets.append(planet_c(pos = vector(d_at_aphelion[name], 0, 0), radius = radius[name]*2E3, m = mass[name], \
-                          color = material[name], make_trail = True, retain = 365))
-    planets[-1].v = vector(0, v_at_aphelion[name], 0)
+    planets.append(Planet(pos=vec(d_at_aphelion[name], 0, 0), radius=radius[name]*2E3, mass=mass[name], 
+                          color=material[name], v=vec(0, v_at_aphelion[name], 0)))
 
 """
  4. 星球運動部分
@@ -58,7 +71,6 @@ while(True):
     rate(60*24)
 # 用 for 迴圈自動跑完所有行星的資料
     for planet in planets:
-        planet.v += planet.a()*dt
-        planet.pos += planet.v*dt
+        planet.update(dt)
 # 更新時間
     t += dt
