@@ -1,6 +1,7 @@
 """
- VPython教學: 12-3.行星運動, 用dictionary 儲存星球資料, 用 for 迴圈產生行星
- 日期: 2018/2/26
+ VPython教學: 12-3.行星運動, 用 dictionary 儲存星球資料, 用 for 迴圈產生行星
+ Ver. 1: 2018/2/26
+ Ver. 2: 2019/9/8
  作者: 王一哲
 """
 from vpython import *
@@ -30,21 +31,20 @@ dt = 60*60            # 時間間隔
     (2) 用 sphere 物件產生星球 http://www.glowscript.org/docs/VPythonDocs/sphere.html
     (3) 星球的半徑要手動調整比例, 否則會看不到星球
 """
-scene = canvas(title = "Planetary Motion", width = 600, height = 600, x = 0, y = 0, background = color.black)
+scene = canvas(title="Planetary Motion", width=600, height=600, x=0, y=0, background=color.black)
 # 產生太陽 sun
-sun = sphere(pos = vector(0,0,0), radius = radius["Sun"]*20, m = mass["Sun"], color = color.orange, emissive = True)
+sun = sphere(pos=vec(0,0,0), radius=radius["Sun"]*20, m=mass["Sun"], color=color.orange, emissive=True)
 # 用 for 迴圈產生水星、金星、地球、火星
 names = ["Mercury", "Venus", "Earth", "Mars"]
 planets = []
 
 for name in names:
-    planets.append(sphere(pos = vector(d_at_aphelion[name], 0, 0), radius = radius[name]*2E3, m = mass[name], \
-                          color = material[name], make_trail = True, retain = 365))
-    planets[-1].v = vector(0, v_at_aphelion[name], 0)
+    planets.append(sphere(pos=vec(d_at_aphelion[name], 0, 0), radius=radius[name]*2E3, m=mass[name], 
+                          color=material[name], make_trail=True, retain = 365, v=vec(0, v_at_aphelion[name], 0)))
 
-# 原來的寫法為 scene.lights = [local_light(pos = vector(0,0,0), color = color.white)]
+# 原來的寫法為 scene.lights = [local_light(pos = vec(0,0,0), color = color.white)]
 # 在 VPython 7 中 canvas.lights 無法設定為 local_light, 只能另外在太陽處放置另一個光源 lamp
-lamp = local_light(pos = vector(0,0,0), color = color.white)
+lamp = local_light(pos=vec(0,0,0), color=color.white)
 
 """
  3. 星球運動部分
@@ -53,7 +53,7 @@ while(True):
     rate(60*24)
 # 用 for 迴圈自動跑完所有行星的資料
     for planet in planets:
-        planet.a = - G*sun.m / planet.pos.mag2 * planet.pos.norm()
+        planet.a = -G*sun.m / planet.pos.mag2 * planet.pos.norm()
         planet.v += planet.a*dt
         planet.pos += planet.v*dt
 # 更新時間
