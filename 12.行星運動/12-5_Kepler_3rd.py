@@ -2,6 +2,7 @@
  VPython教學: 12-5.克卜勒第三行星運動定律
  Ver. 1: 2018/3/1
  Ver. 2: 2018/4/17
+ Ver. 3: 3019/9/8
  作者: 王一哲
 """
 from vpython import *
@@ -28,17 +29,18 @@ dt = 60*60             # 時間間隔
     (2) 用 sphere 物件產生星球 http://www.glowscript.org/docs/VPythonDocs/sphere.html
     (3) 星球的半徑要手動調整比例, 否則會看不到星球
 """
-scene = canvas(title = "Kepler's Third Law of Planetary Motion", width = 600, height = 600, x = 0, y = 0, background = color.black)
+scene = canvas(title="Kepler's Third Law of Planetary Motion", width=600, height=600,
+               x=0, y=0, background=color.black)
 # 產生太陽 sun, 地球 earth 及自訂行星 planet
-sun = sphere(pos = vector(0,0,0), radius = size, m = sun_m, color = color.orange, emissive = True)
-earth = sphere(pos = vector(d, 0, 0), radius = size, texture = textures.earth, make_trail = True, trail_color = color.blue, retain = 365)
-earth.v = vector(0, v0, 0)
-planet = sphere(pos = vector(m*(1+ec)*d, 0, 0), radius = size, color = color.red, make_trail = True, retain = 365*m)
-planet.v = vector(0, v0/sqrt(m)*sqrt((1-ec)/(1+ec)), 0)
-line = cylinder(pos = vector(0, 0, 0), axis = vector(m*(1+ec)*d, 0, 0), radius = 0.3*size, color = color.yellow)
-# 原來的寫法為 scene.lights = [local_light(pos = vector(0,0,0), color = color.white)]
+sun = sphere(pos=vec(0,0,0), radius=size, m=sun_m, color=color.orange, emissive=True)
+earth = sphere(pos=vec(d, 0, 0), radius=size, texture=textures.earth, make_trail=True,
+               trail_color=color.blue, retain=365, v=vec(0, v0, 0))
+planet = sphere(pos=vec(m*(1+ec)*d, 0, 0), radius=size, color=color.red, make_trail=True,
+                retain=365*m, v=vec(0, v0/sqrt(m)*sqrt((1-ec)/(1+ec)), 0))
+line = cylinder(pos=vec(0, 0, 0), axis=vec(m*(1+ec)*d, 0, 0), radius=0.3*size, color=color.yellow)
+# 原來的寫法為 scene.lights = [local_light(pos = vec(0,0,0), color = color.white)]
 # 在 VPython 7 中 canvas.lights 無法設定為 local_light, 只能另外在太陽處放置另一個光源 lamp
-lamp = local_light(pos = vector(0,0,0), color = color.white)
+lamp = local_light(pos=vec(0,0,0), color=color.white)
 
 """
  3. 星球運動部分
@@ -46,10 +48,10 @@ lamp = local_light(pos = vector(0,0,0), color = color.white)
 while(True):
     rate(60*24)
 # 計算行星加速度、更新速度、位置
-    earth.a = - G*sun.m / earth.pos.mag2 * earth.pos.norm()
+    earth.a = -G*sun.m / earth.pos.mag2 * earth.pos.norm()
     earth.v += earth.a*dt
     earth.pos += earth.v*dt
-    planet.a = - G*sun.m / planet.pos.mag2 * planet.pos.norm()
+    planet.a = -G*sun.m / planet.pos.mag2 * planet.pos.norm()
     planet.v += planet.a*dt
     planet.pos += planet.v*dt
 # 判斷行星是否回到出發點
