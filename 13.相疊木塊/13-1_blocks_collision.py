@@ -42,12 +42,12 @@ if(v2 >= v1): bx = xmin + 0.5*d2
 else: bx = xmin + d1 - 0.5*d2
 b2 = box(pos=vec(bx, h1, 0), size=vec(d2, h2, w2), color=c2, v=vec(v2, 0, 0))
 # 繪圖部分
-gd = graph(title="E - t plot", x=0, y=300, width=600, height=450, xtitle="<i>t</i> (s)",
+gd = graph(title="<i>E</i> - <i>t</i> plot", x=0, y=300, width=600, height=450, xtitle="<i>t</i> (s)",
            ytitle="red: <i>K</i><sub>1</sub>, green: <i>K</i><sub>2</sub>, blue: <i>E</i> (J)")
 kt1 = gcurve(graph=gd, color=c1)
 kt2 = gcurve(graph=gd, color=c2)
 et = gcurve(graph=gd, color=color.blue)
-gd2 = graph(title="v - t plot", x=0, y=750, width=600, height=450, xtitle="<i>t</i> (s)",
+gd2 = graph(title="<i>v</i> - <i>t</i> plot", x=0, y=750, width=600, height=450, xtitle="<i>t</i> (s)",
             ytitle="red: <i>v</i><sub>1</sub>, green: <i>v</i><sub>2</sub> (m/s)")
 vt1 = gcurve(graph=gd2, color=c1)
 vt2 = gcurve(graph=gd2, color=c2)
