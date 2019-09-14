@@ -22,13 +22,13 @@ b1 = sphere(pos=vec(-L+r1, r1*(2/3), 0), m=m1, v=v1, radius=r1, color=c1, make_t
 b2 = sphere(pos=vec(0, 0, 0), m=m2, v=v2, radius=r2, color=c2, make_trail=True)
 # px-t plot
 gd1 = graph(title="<i>p<sub>x</sub></i>-<i>t</i> plot", width=600, height=450, x=0, y=600, xtitle="<i>t</i> (s)",
-            ytitle="blue: <i>p</i><sub><i>x</i>1</sub>, red: <i>p</i><sub><i>x</i>2</sub>, green: <i>p</i><sub>x</sub></i> (kg m/s)")
+            ytitle="blue: <i>p<sub><i>x</i>1</sub>, red: <i>p</i><sub><i>x</i>2</sub>, green: <i>p</i><sub>x</sub></i> (kg m/s)")
 px1 = gcurve(graph=gd1, color=c1)
 px2 = gcurve(graph=gd1, color=c2)
 px = gcurve(graph=gd1, color=color.green)
 # py-t plot
 gd2 = graph(title="<i>p<sub>y</sub></i>-<i>t</i> plot", width=600, height=450, x=0, y=1050, xtitle="<i>t</i> (s)",
-            ytitle="blue: <i>p</i><sub><i>y</i>1</sub>, red: <i>p</i><sub><i>y</i>2</sub>, green: <i>p</i><sub>y</sub></i> (kg m/s)")
+            ytitle="blue: <i>p<sub><i>y</i>1</sub>, red: <i>p</i><sub><i>y</i>2</sub>, green: <i>p</i><sub>y</sub></i> (kg m/s)")
 py1 = gcurve(graph=gd2, color=c1)
 py2 = gcurve(graph=gd2, color=c2)
 py = gcurve(graph=gd2, color=color.green)
