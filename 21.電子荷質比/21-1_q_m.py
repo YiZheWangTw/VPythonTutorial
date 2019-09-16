@@ -25,7 +25,7 @@ t, dt = 0, 1E-5            # 時間, 時間間隔
 """
 # 產生動畫視窗、平行帶電板、水平線、帶電粒子
 scene = canvas(title="Mass-to-Charge Ratio", width=800, height=600, x=0, y=0,
-               center=vec(0, 0, 0), background = color.black)
+               center=vec(0, 0, 0), background = color.black, range=1.2*L)
 p1 = box(pos=vec(-L/2, d/2, 0), size=vec(L, 0.01*L, L), color=color.blue)
 p2 = box(pos=vec(-L/2, -d/2, 0), size=vec(L, 0.01*L, L), color=color.blue)
 screen = box(pos=vec(L, 0, 0), size=vec(0.01*L, 1.5*L, L), color=color.blue)
