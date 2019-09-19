@@ -2,6 +2,7 @@
  VPython教學: 25-3.2個載流線圈產生的磁場
  Ver. 1: 2018/4/11
  Ver. 2: 2018/4/20 可調整範圍
+ Ver. 3: 2019/9/19
  作者: 王一哲
 """
 from vpython import *
@@ -24,45 +25,39 @@ Bmax = 5              # 顯示的磁場最大值
 
 """
  2. 畫面設定
-    (1) 用 canvas 物件作為顯示動畫用的視窗 http://www.glowscript.org/docs/VPythonDocs/canvas.html
-    (2) 用 ring 物件產生圓環 http://www.glowscript.org/docs/VPythonDocs/ring.html
-    (3) 用 sphere 物件產生小球 http://www.glowscript.org/docs/VPythonDocs/sphere.html
-    (4) 用 arrow 物件產生表示磁場用的箭頭 http://www.glowscript.org/docs/VPythonDocs/arrow.html
 """
 # 產生動畫視窗及線圈
-scene = canvas(title = "Magnetic Field of Two Current Loops", width = 600, height = 600, x = 0, y = 0, \
-               center = vector(0, L/10, 0), background = color.black)
-loop1 = ring(pos = vector(0, delta, 0), axis = vector(0, 1, 0), radius = r, thickness = 0.2*size, color = color.blue)
-loop2 = ring(pos = vector(0, -delta, 0), axis = vector(0, 1, 0), radius = r, thickness = 0.2*size, color = color.blue)
+scene = canvas(title="Magnetic Field of Two Current Loops", width=600, height=600, x=0, y=0, 
+               center=vec(0, 0.1*L, 0), background=color.black)
+loop1 = ring(pos=vec(0, delta, 0), axis=vec(0, 1, 0), radius=r, thickness=0.2*size, color=color.blue)
+loop2 = ring(pos=vec(0, -delta, 0), axis=vec(0, 1, 0), radius=r, thickness=0.2*size, color=color.blue)
 
 # 產生串列 segs, 用 for 迴圈產生圓環分割後的小球並填入串列 segs 中
 segs1, segs2 = [], []
 for i in range(n):
-    segs1.append(sphere(pos = vector(r*cos(i*2*pi*part/n), delta, -r*sin(i*2*pi*part/n)), radius = size, color = color.cyan))
-    segs2.append(sphere(pos = vector(r*cos(i*2*pi*part/n), -delta, -r*sin(i*2*pi*part/n)), radius = size, color = color.cyan))
+    segs1.append(sphere(pos=vec(r*cos(i*2*pi*part/n), delta, -r*sin(i*2*pi*part/n)), radius=size, color=color.cyan))
+    segs2.append(sphere(pos=vec(r*cos(i*2*pi*part/n), -delta, -r*sin(i*2*pi*part/n)), radius=size, color=color.cyan))
 
 # 計算畫箭頭的位置並加到串列 locations 當中
 locations = []
 for i in range(N+1):
     for j in range(N+1):
         for k in range(N+1):
-            location = vector(L/N*i - L/2, L/N*j - L/2, L/N*k - L/2)
+            location = vec(L/N*i - L/2, L/N*j - L/2, L/N*k - L/2)
             locations.append(location)
 
 # 自訂函式 magnetic, 計算某個位置的磁場
 def magnetic(loc, segments):
-    field = vector(0, 0, 0)
+    field = vec(0, 0, 0)
     for segment in segments:
         axis = loc - segment.pos
-        if(direct): dr = norm(vector(segment.pos.z, 0, -segment.pos.x))
-        else: dr = norm(vector(-segment.pos.z, 0, segment.pos.x))
+        if(direct): dr = norm(vec(segment.pos.z, 0, -segment.pos.x))
+        else: dr = norm(vec(-segment.pos.z, 0, segment.pos.x))
         field += mu*current/(4*pi)*d*cross(dr, axis.norm())/axis.mag2
     return field
 
 # 依序讀取串列 locations 的元素, 在對應的位置產生箭頭
-fields = []
-for location in locations:
-    fields.append(arrow(pos = location, axis = vector(0, 0, 0), color = color.green))
+fields = [arrow(pos = location, axis = vec(0, 0, 0), color = color.green) for location in locations]
 
 # 更新箭頭的長度及方向, 若磁場量值 >= Bmax 則設定為 Bmax, 以避免箭頭蓋住其它東西
 # 量值接近 Bmax 偏紅色, 量值接近 0 偏綠色
@@ -72,4 +67,4 @@ for field in fields:
     value = value1 + value2
     if(value.mag >= Bmax): value = value/value.mag * Bmax
     field.axis = value
-    field.color = vector(value.mag/Bmax, 1 - value.mag/Bmax, 0)
+    field.color = vec(value.mag/Bmax, 1 - value.mag/Bmax, 0)
