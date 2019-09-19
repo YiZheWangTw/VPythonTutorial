@@ -53,9 +53,10 @@ def magnetic(loc, segments):
     return field
 
 # 依序讀取串列 locations 的元素, 在對應的位置產生箭頭
-fields = []
-for location in locations:
-    fields.append(arrow(pos=location, axis=vec(0, 0, 0), color=color.green))
+#fields = []
+#for location in locations:
+#    fields.append(arrow(pos=location, axis=vec(0, 0, 0), color=color.green))
+fields = [arrow(pos=location, axis=vec(0, 0, 0), color=color.green) for location in locations]
 
 # 更新箭頭的長度及方向, 記錄磁場強度最大值, 量值接近最大值偏紅色, 量值接近 0 偏綠色
 Bmax = 0
