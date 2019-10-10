@@ -2,7 +2,7 @@
  VPython教學: 5-5.水平抛射, 用for迴圈改變h, 記錄t、R
  Ver. 1: 2018/3/21
  Ver. 2: 2018/6/13  加上用 matplotlib.pyplot 繪圖的部分
- Ver. 3: 2019/9/6
+ Ver. 3: 2019/10/10 改用 with 開啟檔案
  作者: 王一哲
 """
 from vpython import *
@@ -25,33 +25,36 @@ scene = canvas(title="Projectile", width=800, height=600, x=0, y=0, center=vec(0
 floor = box(pos=vec(0, -size, 0), size=vec(L, 0.01, 10), texture=textures.metal)
 
 # 開啟檔案 data.csv, 屬性為寫入, 先寫入欄位的標題
-file = open("data.csv", "w", encoding = "UTF-8")
-file.write("h(m), t(s), R(m)\n")
+with open("5-5_data.csv", "w", encoding = "UTF-8") as file:
+    file.write("h(m), t(s), R(m)\n")
 
 """
- 3. 用for迴圈改變h, 計算t、R, 寫入檔案
+ 3. 主程式
 """
-for h in range(5, 51, 1):
+def main(h):
     t = 0
-    ball = sphere(pos=vec(-L/2, h, 0), radius=size, texture=textures.wood, make_trail=True, v=vec(v0, 0, 0), a=vec(0, -g, 0))
-    # 物體運動部分
-    while(ball.pos.y - floor.pos.y > size + 0.5*floor.height):
-        rate(500)
+    ball = sphere(pos=vec(-L/2, h, 0), radius=size, texture=textures.wood, make_trail=True,
+                  v=vec(v0, 0, 0), a=vec(0, -g, 0))
+    while ball.pos.y - floor.pos.y > size + 0.5*floor.height:
         ball.v += ball.a*dt
         ball.pos += ball.v*dt
         t += dt
-    print(h, t, ball.pos.x + L/2)
-    file.write(str(h) + "," + str(t) + "," + str(ball.pos.x + L/2) + "\n")
-    data_h.append(h)
-    data_x.append(ball.pos.x + L/2)
+    return t, ball.pos.x + L/2
 
-file.close() # 關閉檔案
+"""
+ 4. 用for迴圈改變h, 計算t、R, 寫入檔案
+"""
+for h in range(5, 51, 1):
+    t, r = main(h)
+    with open("5-5_data.csv", "a", encoding = "UTF-8") as file:
+        file.write(str(h) + "," + str(t) + "," + str(r) + "\n")
+    data_h.append(h)
+    data_x.append(r)
 
 # 用 matplotlib.pyplot 繪圖
 plt.figure(figsize=(8, 6), dpi=100)                   # 設定圖片尺寸
-plt.title('h - R plot', fontsize=18)                  # 設定圖標題
-plt.xlabel('h(m)', fontsize=16)                       # 設定坐標軸標籤
-plt.ylabel('R(m)', fontsize=16)
+plt.xlabel(r'$h ~\mathrm{(m)}$', fontsize=16)         # 設定坐標軸標籤
+plt.ylabel(r'$R ~\mathrm{(m)}$', fontsize=16)
 plt.xticks(fontsize=12)                               # 設定坐標軸數字格式
 plt.yticks(fontsize=12)
 plt.grid(color='red', linestyle='--', linewidth=1)    # 設定格線顏色、種類、寬度
