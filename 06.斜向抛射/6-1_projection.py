@@ -21,8 +21,7 @@ dt=0.001            # 時間間隔
  2. 畫面設定
 """
 scene = canvas(title="Projection", width=800, height=400, x=0, y=0,
-               
-center=vec(0, 5, 0), background=vec(0, 0.6, 0.6))
+               center=vec(0, 5, 0), background=vec(0, 0.6, 0.6))
 floor = box(pos=vec(0, -size, 0), size=vec(L, 0.01, 10), texture=textures.metal)
 ball = sphere(pos=vec(-L/2, 0, 0), radius=size, color=color.red, make_trail=True,
               v=vec(v0*cos(theta), v0*sin(theta), 0), a=vec(0, -g, 0))
