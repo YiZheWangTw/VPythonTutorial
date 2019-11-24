@@ -32,8 +32,8 @@ floor = box(pos=vec(0, -d1/2.0, 0), size=vec((xmax - xmin), 0.05, 0.8), color=co
 # 產生左側木塊 b1,  右側木塊 b2 並設定初速度
 b1 = box(pos=vec(-L0 - 1, 0, 0), size=vec(d1, d1, d1), color=c1, m=m1, v=vec(v1, 0, 0))
 b2 = box(pos=vec(0, 0, 0), size=vec(d2, d2, d2), color=c2, m=m2, v=vec(v2, 0, 0))
-# 產生彈簧, 起點為(-d2/2.0, 0, 0), 方向為(-L0, 0, 0)
-spring = helix(pos=b2.pos + vec(-2*d2, 0, 0), axis=vec(-L0, 0, 0), radius=0.05, thickness=0.03)
+# 產生彈簧, 起點為(-0.5*d2, 0, 0), 方向為(-L0, 0, 0)
+spring = helix(pos=b2.pos + vec(-0.5*d2, 0, 0), axis=vec(-L0, 0, 0), radius=0.05, thickness=0.03)
 # 繪圖部分
 gd1 = graph(title="<i>E</i>-<i>t</i> plot", x=0, y=300, width=600, height=450, xtitle="<i>t</i> (s)", 
             ytitle="red: <i>K</i><sub>1</sub>, green: <i>K</i><sub>2</sub>, orange: <i>U</i>, blue: <i>E</i> (J)")
