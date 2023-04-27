@@ -48,13 +48,12 @@ alpha_t = gcurve(graph=gd, color=color.red)
 """
 omega_p = omega
 
-while(i < 5):
+while i < 5:
     rate(1000)
 # 計算小球所受力矩、角加速度、角速度、角位移
     r = ball.pos - vec(0, L/2, 0)
     F = vec(0, -m*g, 0) - b*ball.v
-    torque = cross(r, F)
-    alpha = torque.z/(m*L*L)
+    alpha = cross(r, F).z/(m*L*L)
     omega += alpha*dt
     theta += omega*dt
 # 更新小球的位置、速度, 繩子的軸方向及長度
@@ -77,7 +76,7 @@ while(i < 5):
     alpha_t.plot(pos = (t, alpha))
 # 檢驗小球是否經過一個週期
     omega_c = omega
-    if(omega_p > 0 and omega_c < 0):
+    if omega_p > 0 and omega_c < 0:
         i += 1
         print(i, t)
     omega_p = omega_c
