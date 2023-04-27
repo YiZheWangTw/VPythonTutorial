@@ -16,7 +16,7 @@ L = 5               # 擺長
 theta0 = radians(30)# 起始擺角, 用 radians 將單位換成 rad
 theta = theta0      # 擺角
 g = 9.8             # 重力加速度
-T = 2*pi*sqrt((L+size)/g)  # 單擺週期理論值, L=5, g=9.8, T=4.48798950512828
+T = 2*pi*sqrt((L+size)/g)  # 單擺週期理論值, L=5, g=9.8
 alpha = 0           # 角加速度, 初始值為 0
 omega = 0           # 角速度, 初始值為 0
 i = 0               # 小球經過週期次數
