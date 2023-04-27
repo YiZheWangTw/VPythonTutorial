@@ -2,9 +2,10 @@
  VPython教學: 9-1.單擺
  Ver. 1: 2018/2/25
  Ver. 2: 2019/9/8
+ Ver. 3: 2023/4/27 懸掛點改成原點，所有物件向上平移
  作者: 王一哲
 """
-from vpython import *
+#from vpython import *
 
 """
  1. 參數設定, 設定變數及初始值
@@ -15,7 +16,7 @@ L = 5               # 擺長
 theta0 = radians(30)# 起始擺角, 用 radians 將單位換成 rad
 theta = theta0      # 擺角
 g = 9.8             # 重力加速度
-T = 2*pi*sqrt(L/g)  # 單擺週期理論值, L=5, g=9.8, T=4.48798950512828
+T = 2*pi*sqrt((L+size)/g)  # 單擺週期理論值, L=5, g=9.8, T=4.48798950512828
 alpha = 0           # 角加速度, 初始值為 0
 omega = 0           # 角速度, 初始值為 0
 i = 0               # 小球經過週期次數
@@ -26,11 +27,11 @@ dt = 0.001          # 時間間隔
  2. 畫面設定
 """
 # 產生動畫視窗、天花板、小球、繩子
-scene = canvas(title="Pendulum", width=600, height=600, x=0, y=0, background=vec(0, 0.6, 0.6))
-roof = box(pos=vec(0, L/2 + 0.05, 0), size=vec(L, 0.1, 0.5*L), color=color.blue)
-ball = sphere(pos=vec(L*sin(theta0), L/2 - L*cos(theta0), 0), radius=size, color=color.red,
+scene = canvas(title="Pendulum", width=600, height=600, x=0, y=0, background=vec(0, 0.6, 0.6), center=vec(0, -L/2, 0), range=L)
+roof = box(pos=vec(0, 0.05, 0), size=vec(L, 0.1, 0.5*L), color=color.blue)
+ball = sphere(pos=vec(L*sin(theta0), -L*cos(theta0), 0), radius=size, color=color.red,
               make_trail=True, retain=100, v=vec(0, 0, 0))
-rope = cylinder(pos=vec(0, L/2, 0), axis=ball.pos - vec(0, L/2, 0), radius=0.1*size, color=color.yellow)
+rope = cylinder(pos=vec(0, 0, 0), axis=ball.pos, radius=0.1*size, color=color.yellow)
 # 產生表示速度的箭頭
 arrow_v = arrow(pos=ball.pos, axis=vec(0, 0, 0), shaftwidth=0.3*size, color=color.green)
 arrow_vx = arrow(pos=ball.pos, axis=vec(0, 0, 0), shaftwidth=0.3*size, color=color.magenta)
@@ -50,13 +51,13 @@ omega_p = omega
 while i < 5:
     rate(1000)
 # 計算小球所受力矩、角加速度、角速度、擺角
-    r = ball.pos - vec(0, L/2, 0)
+    r = ball.pos
     alpha = cross(r, vec(0, -m*g, 0)).z/(m*L**2)
     #alpha = -m*g*ball.pos.x/(m*L**2)
     omega += alpha*dt
     theta += omega*dt
 # 更新小球的位置、速度, 繩子的軸方向及長度
-    ball.pos = vec(L*sin(theta), L/2 - L*cos(theta), 0)
+    ball.pos = vec(L*sin(theta), -L*cos(theta), 0)
     v = L*omega
     vx = v*cos(theta)
     vy = v*sin(theta)
