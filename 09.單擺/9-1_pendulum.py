@@ -1,4 +1,3 @@
-Web VPython 3.2
 """
  VPython教學: 9-1.單擺
  Ver. 1: 2018/2/25
@@ -6,7 +5,7 @@ Web VPython 3.2
  Ver. 3: 2023/4/27 懸掛點改成原點，所有物件向上平移
  作者: 王一哲
 """
-#from vpython import *
+from vpython import *
 
 """
  1. 參數設定, 設定變數及初始值
