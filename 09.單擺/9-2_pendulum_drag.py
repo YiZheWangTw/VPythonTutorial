@@ -5,7 +5,7 @@
  Ver. 3: 2023/4/27 懸掛點改成原點，所有物件向上平移
  作者: 王一哲
 """
-#from vpython import *
+from vpython import *
 
 """
  1. 參數設定, 設定變數及初始值
@@ -17,13 +17,13 @@ theta0 = radians(30)     # 起始擺角, 用 radians 將單位換成 rad
 theta = theta0           # 擺角
 g = 9.8                  # 重力加速度
 b = 0.1                  # 空氣阻力 f = -bv
-T = 2*pi*sqrt((L+size)/g)# 單擺週期理論值, L = 5, g = 9.8,
+T = 2*pi*sqrt(L/g)       # 單擺週期理論值, L = 5, g = 9.8,
 alpha = 0                # 角加速度, 初始值為 0
 omega = 0                # 角速度, 初始值為 0
 i = 0                    # 小球經過週期次數
 t = 0                    # 時間
 dt = 0.001               # 時間間隔
-print("週期理論值 T = {:f} s".format(T))
+print("週期理論值 T = {:.12f} s".format(T))
 
 """
  2. 畫面設定
@@ -80,7 +80,7 @@ while i < 5:
     omega_c = omega
     if omega_p > 0 and omega_c < 0:
         i += 1
-        print(i, t)
+        print("第{:d}次擺動經過的時間 t = {:.12f} s".format(i, t))
     omega_p = omega_c
 # 更新時間
     t += dt
